@@ -1,20 +1,44 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
 const API_BASE_URL = "http://localhost:5000";
 
-const AddMovie = () => {
+const UpdateMovie = () => {
+  const { id } = useParams();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const handleAddMovie = (e) => {
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`${API_BASE_URL}/movies/${id}`)
+      .then((res) => {
+        if (user.email !== res.data.addedBy) {
+          toast.error("Access Denied: You are not the owner.");
+          navigate("/");
+        } else {
+          setMovie(res.data);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching movie:", error);
+        toast.error("Failed to load movie data.");
+        setLoading(false);
+      });
+  }, [id, user, navigate]);
+
+  const handleUpdateMovie = (e) => {
     e.preventDefault();
     const form = e.target;
 
-    const newMovie = {
+    const updatedMovie = {
       title: form.title.value,
       genre: form.genre.value,
       releaseYear: parseInt(form.releaseYear.value),
@@ -26,28 +50,34 @@ const AddMovie = () => {
       posterUrl: form.posterUrl.value,
       language: form.language.value,
       country: form.country.value,
-      addedBy: user.email,
     };
 
     axios
-      .post(`${API_BASE_URL}/movies`, newMovie)
+      .put(`${API_BASE_URL}/movies/${id}`, updatedMovie)
       .then((res) => {
-        if (res.data.insertedId) {
-          toast.success("Movie added successfully!");
-          form.reset();
-          navigate("/movies/my-collection");
+        if (res.data.modifiedCount > 0) {
+          toast.success("Movie updated successfully!");
+          navigate(`/movies/${id}`);
+        } else {
+          toast.error("No changes were made.");
         }
       })
       .catch((error) => {
-        console.error("Error adding movie:", error);
-        toast.error("Failed to add movie.");
+        console.error("Error updating movie:", error);
+        toast.error("Failed to update movie.");
       });
   };
 
+  if (loading || !movie) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-8 bg-base-200 rounded-lg shadow-xl my-10">
-      <h2 className="text-4xl font-bold text-center mb-8">Add a New Movie</h2>
-      <form onSubmit={handleAddMovie} className="space-y-4">
+      <h2 className="text-4xl font-bold text-center mb-8">
+        Update Movie: {movie.title}
+      </h2>
+      <form onSubmit={handleUpdateMovie} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="form-control">
             <label className="label">
@@ -56,7 +86,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="title"
-              placeholder="e.g., Inception"
+              defaultValue={movie.title}
               className="input input-bordered"
               required
             />
@@ -68,7 +98,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="genre"
-              placeholder="e.g., Sci-Fi"
+              defaultValue={movie.genre}
               className="input input-bordered"
               required
             />
@@ -83,7 +113,7 @@ const AddMovie = () => {
             <input
               type="number"
               name="releaseYear"
-              placeholder="e.g., 2010"
+              defaultValue={movie.releaseYear}
               className="input input-bordered"
               required
             />
@@ -98,7 +128,7 @@ const AddMovie = () => {
               step="0.1"
               min="0"
               max="10"
-              placeholder="e.g., 8.8"
+              defaultValue={movie.rating}
               className="input input-bordered"
               required
             />
@@ -110,7 +140,7 @@ const AddMovie = () => {
             <input
               type="number"
               name="duration"
-              placeholder="e.g., 148"
+              defaultValue={movie.duration}
               className="input input-bordered"
               required
             />
@@ -125,7 +155,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="director"
-              placeholder="e.g., Christopher Nolan"
+              defaultValue={movie.director}
               className="input input-bordered"
             />
           </div>
@@ -136,7 +166,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="cast"
-              placeholder="e.g., Leonardo DiCaprio, ..."
+              defaultValue={movie.cast}
               className="input input-bordered"
             />
           </div>
@@ -150,7 +180,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="language"
-              placeholder="e.g., English"
+              defaultValue={movie.language}
               className="input input-bordered"
             />
           </div>
@@ -161,7 +191,7 @@ const AddMovie = () => {
             <input
               type="text"
               name="country"
-              placeholder="e.g., USA"
+              defaultValue={movie.country}
               className="input input-bordered"
             />
           </div>
@@ -174,7 +204,7 @@ const AddMovie = () => {
           <input
             type="url"
             name="posterUrl"
-            placeholder="https://..."
+            defaultValue={movie.posterUrl}
             className="input input-bordered"
             required
           />
@@ -187,17 +217,17 @@ const AddMovie = () => {
           <textarea
             name="plotSummary"
             className="textarea textarea-bordered h-24"
-            placeholder="A thief who steals corporate secrets..."
+            defaultValue={movie.plotSummary}
           ></textarea>
         </div>
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Added By</span>
+            <span className="label-text">Added By (Not Editable)</span>
           </label>
           <input
             type="email"
-            value={user?.email}
+            value={movie.addedBy}
             className="input input-bordered"
             disabled
           />
@@ -205,7 +235,7 @@ const AddMovie = () => {
 
         <div className="form-control mt-6">
           <button type="submit" className="btn btn-primary btn-lg">
-            Add Movie
+            Save Changes
           </button>
         </div>
       </form>
@@ -213,4 +243,4 @@ const AddMovie = () => {
   );
 };
 
-export default AddMovie;
+export default UpdateMovie;
