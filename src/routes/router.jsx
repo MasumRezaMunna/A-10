@@ -9,11 +9,13 @@ import AddMovie from "../pages/AddMovie/AddMovie";
 import PrivateRoute from "./PrivateRoute"; 
 import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import UpdateMovie from "../pages/UpdateMovie/UpdateMovie";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
