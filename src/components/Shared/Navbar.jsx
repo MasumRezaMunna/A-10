@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext); 
@@ -68,8 +69,12 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
+
+        <ThemeToggle />
+
         {user ? (
-          <div className="dropdown dropdown-end z-[10]">
+          <div className="dropdown dropdown-end z-[10]
+          ml-2">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img alt="User profile" src="https://i.ibb.co/103N0fV/user.png" />
