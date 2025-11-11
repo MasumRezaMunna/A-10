@@ -14,7 +14,6 @@ const MovieCard = ({ movie }) => {
         />
       </figure>
 
-      {/* Card Body */}
       <div className="card-body p-4 bg-black bg-opacity-50 transition duration-300 ease-in-out hover:bg-opacity-75">
         <h2 className="card-title text-white text-2xl font-bold">{title}</h2>
         <p className="text-sm text-gray-300 flex items-center mb-2">
