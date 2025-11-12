@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
 
 const UpdateMovie = () => {
   const { id } = useParams();

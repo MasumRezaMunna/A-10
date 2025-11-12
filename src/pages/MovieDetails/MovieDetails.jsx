@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { FaStar, FaRegCalendarAlt, FaClock } from "react-icons/fa";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -33,7 +33,6 @@ const MovieDetails = () => {
       });
   }, [id]);
 
-  // Check if movie is already in user's watchlist
   useEffect(() => {
     if (user) {
       axios

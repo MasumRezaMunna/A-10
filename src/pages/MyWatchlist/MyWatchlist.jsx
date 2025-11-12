@@ -5,7 +5,7 @@ import LoadingSpinner from '../../components/Shared/LoadingSpinner';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = "http://localhost:5000"; 
+const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/"; 
 
 const MyWatchlist = () => {
   const { user } = useContext(AuthContext);

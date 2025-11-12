@@ -4,7 +4,7 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { FaFilter } from "react-icons/fa";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
 
 const allGenres = [
   "Sci-Fi",

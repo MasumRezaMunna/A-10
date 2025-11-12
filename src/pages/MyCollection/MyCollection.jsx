@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
 
 const MyCollection = () => {
   const { user } = useContext(AuthContext);
