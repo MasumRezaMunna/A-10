@@ -10,7 +10,7 @@ const HeroSection = ({ movies }) => (
     className="hero min-h-[60vh]"
     style={{
       backgroundImage: `url(${
-        movies[0]?.posterUrl || "https://via.placeholder.com/1920x800"
+        movies[0]?.posterUrl || "https://i.ibb.co/8D1fWHZp/2019movies-900x789.jpg"
       })`,
     }}
   >
