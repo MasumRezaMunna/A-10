@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
-const API_BASE_URL = "https://heroic-chimera-b7d46.netlify.app/";
+const API_BASE_URL = "https://a-10-server-delta.vercel.app/";
 
 const UpdateMovie = () => {
   const { id } = useParams();

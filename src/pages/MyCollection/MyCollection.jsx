@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = "https://heroic-chimera-b7d46.netlify.app/";
+const API_BASE_URL = "https://a-10-server-delta.vercel.app/";
 
 const MyCollection = () => {
   const { user } = useContext(AuthContext);
