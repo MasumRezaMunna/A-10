@@ -3,7 +3,7 @@ import axios from "axios";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
-const API_BASE_URL = "https://a-10-server-delta.vercel.app/";
+const API_BASE_URL = "https://a-10-server-qhdn.vercel.app/";
 
 const HeroSection = ({ movies }) => (
   <div

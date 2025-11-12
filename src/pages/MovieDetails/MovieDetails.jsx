@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { FaStar, FaRegCalendarAlt, FaClock } from "react-icons/fa";
 
-const API_BASE_URL = "https://a-10-server-delta.vercel.app/";
+const API_BASE_URL = "https://a-10-server-qhdn.vercel.app/";
 
 const MovieDetails = () => {
   const { id } = useParams();
