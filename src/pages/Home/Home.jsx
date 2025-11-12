@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import MovieCard from "../../components/MovieCard.jsx/MovieCard";
+import MovieCard from "../../components/MovieCard/MovieCard";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
 const API_BASE_URL = "http://localhost:5000";
@@ -62,7 +62,7 @@ const Home = () => {
     .slice(0, 5);
   const recentlyAddedMovies = [...movies]
     .sort((a, b) => new Date(b.releaseYear) - new Date(a.releaseYear))
-    .slice(0, 6); 
+    .slice(0, 6);
 
   return (
     <div>
@@ -129,7 +129,6 @@ const Home = () => {
           </ul>
         </div>
       </div>
-
     </div>
   );
 };

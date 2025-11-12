@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import AllMovies from "../pages/AllMovies/AllMovies";
 import MyCollection from "../pages/MyCollection/MyCollection";
 import AddMovie from "../pages/AddMovie/AddMovie";
+import MyWatchlist from "../pages/MyWatchlist/MyWatchlist";
 import PrivateRoute from "./PrivateRoute"; 
 import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import UpdateMovie from "../pages/UpdateMovie/UpdateMovie";
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "/movies/update/:id",
         element: <PrivateRoute><UpdateMovie /></PrivateRoute>,
+      },
+      {
+        path: "/my-watchlist",
+        element: <PrivateRoute><MyWatchlist /></PrivateRoute>,
       },
       {
         path: "/login",
