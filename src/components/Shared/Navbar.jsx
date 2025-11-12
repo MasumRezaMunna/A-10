@@ -74,15 +74,21 @@ const Navbar = () => {
         <ThemeToggle />
 
         {user ? (
-          <div className="dropdown dropdown-end z-[10]
-          ml-2">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+          <div className="dropdown dropdown-end z-[10] ml-2">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-left" data-tip={user.displayName || user.email}>
               <div className="w-10 rounded-full">
-                <img alt="User profile" src="https://i.ibb.co/103N0fV/user.png" />
+                <img 
+                    alt="User profile" 
+                    src={user.photoURL || "https://i.ibb.co/103N0fV/user.png"} 
+                />
               </div>
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li><Link to="/profile" className="justify-between">{user.displayName || "User Profile"}</Link></li>
+              
+              <li><span className="justify-between font-bold text-lg">{user.displayName || "User Profile"}</span></li>
+              
+              <li><Link to="/user-profile">Update Profile</Link></li> 
+              
               <li><a onClick={handleLogout}>Logout</a></li>
             </ul>
           </div>

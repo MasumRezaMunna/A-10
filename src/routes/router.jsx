@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import MovieDetails from "../pages/MovieDetails/MovieDetails";
 import UpdateMovie from "../pages/UpdateMovie/UpdateMovie";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/my-watchlist",
         element: <PrivateRoute><MyWatchlist /></PrivateRoute>,
+      },
+      {
+        path: "/user-profile",
+        element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
       },
       {
         path: "/login",
