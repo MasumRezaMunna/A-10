@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { FaStar, FaRegCalendarAlt, FaClock } from "react-icons/fa";
 
-const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
+const API_BASE_URL = "https://heroic-chimera-b7d46.netlify.app/";
 
 const MovieDetails = () => {
   const { id } = useParams();

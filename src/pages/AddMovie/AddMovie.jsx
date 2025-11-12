@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
+const API_BASE_URL = "https://heroic-chimera-b7d46.netlify.app/";
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);

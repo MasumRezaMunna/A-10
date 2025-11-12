@@ -3,7 +3,7 @@ import axios from "axios";
 import MovieCard from "../../components/MovieCard/MovieCard";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 
-const API_BASE_URL = "https://heroic-chimera-b7d464.netlify.app/";
+const API_BASE_URL = "https://heroic-chimera-b7d46.netlify.app/";
 
 const HeroSection = ({ movies }) => (
   <div
