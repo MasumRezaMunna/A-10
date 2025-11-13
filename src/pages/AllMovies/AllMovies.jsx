@@ -4,7 +4,7 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import { FaFilter } from "react-icons/fa";
 
-const API_BASE_URL = "https://a-10-server-qhdn.vercel.app/";
+const API_BASE_URL = "https://a-10-server-qhdn.vercel.app";
 
 const allGenres = [
   "Sci-Fi",

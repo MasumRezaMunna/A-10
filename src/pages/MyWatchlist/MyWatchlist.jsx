@@ -5,7 +5,7 @@ import LoadingSpinner from '../../components/Shared/LoadingSpinner';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import toast from 'react-hot-toast';
 
-const API_BASE_URL = "https://a-10-server-qhdn.vercel.app/"; 
+const API_BASE_URL = "https://a-10-server-qhdn.vercel.app"; 
 
 const MyWatchlist = () => {
   const { user } = useContext(AuthContext);

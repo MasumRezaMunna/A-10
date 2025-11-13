@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const API_BASE_URL = "https://a-10-server-qhdn.vercel.app/";
+const API_BASE_URL = "https://a-10-server-qhdn.vercel.app";
 
 const AddMovie = () => {
   const { user } = useContext(AuthContext);
