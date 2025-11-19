@@ -1,7 +1,7 @@
 # MovieMaster Pro
 
-**Live Client Site URL:** []
-**Live Server Site URL:** []
+**Live Client Site URL:** = https://golden-bubblegum-05f10ddd.netlify.app/
+**Live Server Site URL:** = https://a-10-server-qhdn.vercel.app/
 
 A comprehensive movie management system where users can browse, manage, and organize their favorite movies with advanced filtering and personal collections.
 
